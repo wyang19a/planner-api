@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-class TasksController < OpenReadController
+class TasksController < ProtectedController
   before_action :set_task, only: %i[update destroy]
 
   # GET /tasks
   def index
-    @tasks = Task.all
+    @tasks = current_user.tasks
 
-    render json: @tasks
+    render json: @tasks.order(:Tfrom)
   end
 
   # GET /tasks/1
