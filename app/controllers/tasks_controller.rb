@@ -49,7 +49,7 @@ class TasksController < ProtectedController
 
   # Only allow a trusted parameter "white list" through.
   def task_params
-    params.require(:task).permit(:Tto.try(:strftime, '%Y-%m-%d %H:%M'), :Tfrom.try(:strftime, '%Y-%m-%d %H:%M'), :title, :description, :completed, :user_id)
+    params.require(:task).permit(:Tto, :Tfrom, :title, :description, :completed, :user_id)
   end
 
   private :set_task, :task_params
